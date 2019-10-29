@@ -5,12 +5,14 @@ import (
 	"fmt"
 )
 
-var inPath = flag.String("in", "", "path to input directory")
-var outPath = flag.String("out", "", "path to output directory")
+var inArg = flag.String("in", "", "Path to input directory")
+var outArg = flag.String("out", "", "Path to output directory")
+var verArg = flag.Bool("v", false, "Print version")
+var version = "dev"
 
 func main() {
 	flag.Parse()
-	flag.Visit(func(f *flag.Flag) {
-		fmt.Println(f.Name, f.Value)
-	})
+	if *verArg {
+		fmt.Printf("Photocopy v. %s\n", version)
+	}
 }
